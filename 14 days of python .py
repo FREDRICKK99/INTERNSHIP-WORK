@@ -358,6 +358,52 @@ class MyBook(Book):
         print('Price: ' + str(self.price))
     
     
+    
+#     Day 14 scope
+
+    class Difference:
+    def __init__(self, a):
+        self.__elements = a
+        self.maximumDifference = 0
+    
+
+    # Add your code here
+    
+    def computeDifference(self):
+        min_element = 101
+        max_element = 0
+        for element in  self.__elements:
+            if element < min_element:
+                min_element = element
+            if element > max_element:
+                max_element = element
+                
+        self.maximumDifference = max_element - min_element
+            
+        
+        # x = 101
+        # y = 0
+
+        # for item in self.__elements:
+        #     if item < x:
+        #         x = item
+        #     if item > y:
+        #         y = item
+            
+
+    
+        # self.maximumDifference = y - x 
+  
+    
+# End of Difference class
+
+_ = input()
+a = [int(e) for e in input().split(' ')]
+
+d = Difference(a)
+d.computeDifference()
+
+print(d.maximumDifference)
 
 
             
