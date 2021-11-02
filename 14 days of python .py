@@ -107,5 +107,264 @@ class Person:
         # Increment the age of the person in here
         self.age += 1
         
+        
+# Day 5: Loops
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+
+
+if __name__ == '__main__':
+    n = int(input().strip())
+    
+    for i in range(1, 11, 1):
+        # product= n x i
+        print('{0} x {1} = {2}'.format(n , i , n*i))
+        
+
+
+# Day 6: Let's Review
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+n = int(input())
+
+for i in range (n):
+    test_string = input()
+    even_indexed_character = ''
+    odd_indexed_character = ''
+    
+    for j in range(len(test_string)):
+        if j%2 == 0:
+            even_indexed_character += test_string[j]
+        else:
+            odd_indexed_character += test_string[j]
+         
+    print("{} {}".format(even_indexed_character,odd_indexed_character))
+    
+        
+        
+# Day 7: Arrays
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+
+
+if __name__ == '__main__':
+    n = int(input().strip())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    # print("{} {} {} {} {}".format(arr))
+    # print(arr)
+    
+    # arr = [1, 2, 3, 4, 5];     
+    # print("Original array: ");    
+    # for i in range(0, len(arr)):    
+    #     print(arr[i]),     
+    # print("Array in reverse order: ");    
+    #Loop through the array in reverse order    
+    for i in range(len(arr)-1, -1, -1):     
+        print(arr[i], end =" "),  
+
+# Day 8: Dictionaries and Maps
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import sys
+n =int(sys.stdin.readline().strip())
+phone_book = dict()
+for i in range(n):
+    entry = sys.stdin.readline().strip().split(' ')
+    phone_book[entry[0]]=entry[1]
+
+query = sys.stdin.readline().strip()
+while query:
+    phone_number = phone_book.get(query)
+    if phone_number:
+        print(query + '=' + phone_number )
+    else:
+        print('Not found')
+    query = sys.stdin.readline().strip()
+        
+        
+    
+# Day 9: Recursion 3
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'factorial' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts INTEGER n as parameter.
+#
+
+def factorial(n):
+    # Write your code here
+    if n <= 1:
+        return 1
+    else:
+        return n*factorial(n-1)
+   
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    result = factorial(n)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+# Day 10: Binary Numbers
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+
+
+if __name__ == '__main__':
+    n = int(input().strip())
+    current_consecutives_1s = 0
+    maximum_consecutive_1s = 0
+    while n >0:
+        remainder = n % 2
+        if remainder ==1:
+            current_consecutives_1s +=1
+            if current_consecutives_1s > maximum_consecutive_1s:
+                maximum_consecutive_1s = current_consecutives_1s
+        else:
+            current_consecutives_1s = 0
+            
+        n = n // 2
+    print(maximum_consecutive_1s)
+        
+# Day 11: 2D Arrays
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+
+
+if __name__ == '__main__':
+    def _get_hourglass_sum(matrix, row , col):
+        sum = 0
+        sum += matrix[row -1][col -1]
+        sum += matrix[row -1][col]
+        sum += matrix[row -1][col +1]
+        sum += matrix[row][col]
+        sum += matrix[row +1][col -1]
+        sum += matrix[row +1][col]
+        sum += matrix[row +1][col + 1]
+        
+        return sum
+       
+
+    arr = []
+
+    for _ in range(6):
+        arr.append(list(map(int, input().rstrip().split())))
+        
+    max_hourglass_sum = -63
+    for i in range (1,5):
+        for j in range (1,5):
+            current_hourglass_sum = _get_hourglass_sum(arr, i,j)
+            if current_hourglass_sum > max_hourglass_sum:
+                max_hourglass_sum = current_hourglass_sum
+    print(max_hourglass_sum )
+    
+ 
+# Day 12: Inheritance
+
+
+
+class Student(Person):
+    #   Class Constructor
+    #   
+    #   Parameters:
+    #   firstName - A string denoting the Person's first name.
+    #   lastName - A string denoting the Person's last name.
+    #   id - An integer denoting the Person's ID number.
+    #   scores - An array of integers denoting the Person's test scores.
+    #
+    # Write your constructor here
+    def __init__(self, firstName, lastName, idNumber, scores):
+        Person.__init__(self, firstName, lastName , idNumber )
+        self.scores = scores
+
+    #   Function Name: calculate
+    #   Return: A character denoting the grade.
+    #
+    # Write your function here
+    def calculate(self):
+        sum = 0
+        for score in scores:
+            sum += score
+        average = sum /len(scores)
+        if average < 40:
+            return 'T'
+        elif average <55:
+            return 'D'
+        elif average < 70:
+            return 'P'
+        elif average < 80:
+            return 'A'
+        elif average < 90:
+            return 'E'
+        else:
+            return 'O'           
+
+
+
+# Day 13: Abstract Classes
+
+
+
+#Write MyBook class
+class MyBook(Book):
+    def __init__(self, title , author, price):
+        Book.__init__(self, title , author)
+        self.price = price
+        
+    def display(self):
+        print('Title: ' + self.title)
+        print('Author: ' + self.author)
+        print('Price: ' + str(self.price))
+    
+    
+
+
+            
+        
+            
+        
+    
+
 
 
